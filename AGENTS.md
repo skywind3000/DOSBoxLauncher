@@ -157,10 +157,11 @@ DOSBoxLauncher/
     test_config.py
     test_launcher.py
   docs/
-    idea.md               # Project idea
+    concept.md            # Project concept/brief
     guide.md              # Project guidelines
     prd.md                # Project requirements
-    spec.md               # Project tech spec
+    design.md             # Technical design document
+    spec.md               # Technical specification
   pyproject.toml          # Project metadata, deps, tool config
   AGENTS.md
   LICENSE
