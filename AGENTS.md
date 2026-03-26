@@ -6,6 +6,15 @@ Licensed under MIT (Copyright 2026 Linwei).
 
 ---
 
+## Documentation
+
+Read them before anything (if exists):
+
+- `docs/concept.md`: project concept description.
+- `docs/prd.md`: PRD file.
+- `docs/plan.md`: plan & progress.
+
+
 ## Build & Run
 
 ```bash
@@ -138,35 +147,6 @@ errors; do not add `noqa` comments unless there is a documented reason.
 - Use `pathlib.Path` for all filesystem operations.
 - Never hardcode path separators; let `pathlib` handle OS differences.
 - Use `Path.resolve()` to normalize paths before comparison.
-
----
-
-## Project Structure (Intended)
-
-```
-DOSBoxLauncher/
-  dosboxlauncher/         # Main package
-    __init__.py
-    __main__.py           # Entry point (python -m dosboxlauncher)
-    config.py             # Configuration loading/saving
-    launcher.py           # DOSBox process management
-    profiles.py           # Game profile models
-    ui/                   # UI layer (if applicable)
-  tests/                  # Test suite
-    conftest.py           # Shared fixtures
-    test_config.py
-    test_launcher.py
-  docs/
-    concept.md            # Project concept/brief
-    guide.md              # Project guidelines
-    prd.md                # Project requirements
-    design.md             # Technical design document
-    spec.md               # Technical specification
-  pyproject.toml          # Project metadata, deps, tool config
-  AGENTS.md
-  LICENSE
-  README.md
-```
 
 ---
 

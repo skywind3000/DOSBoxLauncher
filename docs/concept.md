@@ -75,6 +75,46 @@
 - 分类信息保存在 `config.json` 里面；
 - 软件界面使用全英文，尽管上面的 “界面布局” 里用的中文；
 
+## 项目目录结构
+
+```
+DOSBoxLauncher/
+  startbox.py               # 启动脚本（import dosboxlauncher 并运行）
+  pyproject.toml            # 项目元数据、依赖、工具配置
+  AGENTS.md
+  LICENSE
+  README.md
+  portable/                 # 便携模式数据目录（可选；存在时覆盖默认数据路径）
+    config.json
+    games.json
+  dosboxlauncher/           # 主包
+    __init__.py
+    __main__.py             # 模块入口（python -m dosboxlauncher）
+    config.py               # 配置加载/保存
+    launcher.py             # DOSBox-X 进程管理
+    profiles.py             # 游戏档案模型
+    ui/                     # UI 层
+  tests/                    # 测试套件
+    conftest.py             # 共享 fixtures
+    test_config.py
+    test_launcher.py
+  docs/                     # 文档
+    concept.md              # 项目构想
+    guide.md                # 项目指南
+    prd.md                  # 产品需求文档
+    design.md               # 技术设计文档
+    spec.md                 # 技术规格说明
+```
+
+启动方式有两种：
+
+- `python startbox.py` — 通过根目录启动脚本运行
+- `python -m dosboxlauncher` — 通过包的 `__main__.py` 入口运行
+
+两者等价，`startbox.py` 内部即 `import dosboxlauncher` 后调用主入口。
+
+---
+
 ## 开发阶段规划
 
 | 阶段 | 功能 | 目标 |
