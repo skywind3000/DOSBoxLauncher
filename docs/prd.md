@@ -273,22 +273,22 @@ Help
 
 ### 3.9 工具栏（F-09）
 
-从左到右依次排列以下按钮：
+从左到右依次排列以下按钮（图标文件详见第 9 节）：
 
-| 按钮     | 动作            | 启用条件       |
-|----------|----------------|---------------|
-| Add      | 打开添加游戏对话框 | 始终可用       |
-| Edit     | 打开编辑游戏对话框 | 选中游戏时可用 |
-| Delete   | 删除选中游戏     | 选中游戏时可用 |
-| Launch   | 启动选中游戏     | 选中游戏时可用 |
+| 按钮     | 图标             | 动作            | 启用条件       |
+|----------|-----------------|----------------|---------------|
+| Add      | `add.gif`       | 打开添加游戏对话框 | 始终可用       |
+| Edit     | `pencil.gif`    | 打开编辑游戏对话框 | 选中游戏时可用 |
+| Delete   | `delete.gif`    | 删除选中游戏     | 选中游戏时可用 |
+| Launch   | `lightning.gif` | 启动选中游戏     | 选中游戏时可用 |
 
 工具栏右侧区域：
 
-| 控件     | 说明                              |
-|----------|----------------------------------|
-| Search   | 实时搜索过滤游戏列表（按名称匹配） |
-| Sort     | 下拉菜单选择排序方式               |
-| Settings | 打开全局设置对话框                 |
+| 控件     | 图标             | 说明                              |
+|----------|-----------------|----------------------------------|
+| Search   | `magnifier.gif` | 实时搜索过滤游戏列表（按名称匹配） |
+| Sort     | —               | 下拉菜单选择排序方式               |
+| Settings | `cog.gif`       | 打开全局设置对话框                 |
 
 ### 3.10 状态栏（F-10）
 
@@ -480,3 +480,101 @@ Help
 | 游戏配置覆盖（Game Overrides） | 单个游戏独立设定的 DOSBox-X 配置，优先级高于全局配置 |
 | 便携模式（Portable Mode） | 项目根目录下存在 `portable/` 目录时，数据文件保存在该目录中而非用户主目录 |
 | 临时 conf 文件 | 启动游戏时，由全局配置与游戏配置合并生成的一次性 DOSBox-X 配置文件 |
+
+---
+
+## 9. 图标与视觉资源规格
+
+### 9.1 图标来源
+
+项目使用 **FamFamFam Silk / Mini** 图标集，位于 `assets/icons/` 目录下。
+
+- **格式**：GIF，16×16 像素。
+- **许可证**：Creative Commons Attribution 2.5 License。
+- **来源**：http://www.famfamfam.com/lab/icons/silk/ 及 http://www.famfamfam.com/lab/icons/mini/
+
+### 9.2 图标用途映射
+
+#### 9.2.1 工具栏图标
+
+| 按钮 | 图标文件 | 图标描述 |
+|------|---------|---------|
+| Add（添加游戏） | `add.gif` | 绿色圆形，内含白色 + 号 |
+| Edit（编辑游戏） | `pencil.gif` | 橙黄色铅笔 |
+| Delete（删除游戏） | `delete.gif` | 红色圆形，内含白色 − 号 |
+| Launch（启动游戏） | `lightning.gif` | 黄色闪电 |
+| Search（搜索输入框图标） | `magnifier.gif` | 蓝色放大镜 |
+| Settings（全局设置） | `cog.gif` | 灰色齿轮 |
+
+#### 9.2.2 菜单栏图标
+
+| 菜单项 | 图标文件 | 图标描述 |
+|--------|---------|---------|
+| File > Add Game | `add.gif` | 绿色 + 号圆形 |
+| File > Launch Game | `lightning.gif` | 黄色闪电 |
+| File > Exit | `door_in.gif` | 门与绿色箭头（进入/退出） |
+| Edit > Edit Game | `pencil.gif` | 铅笔 |
+| Edit > Delete Game | `delete.gif` | 红色 − 号圆形 |
+| Edit > Categories | `tag.gif` | 蓝色标签 |
+| Edit > Settings | `cog.gif` | 齿轮 |
+| Help > About | `information.gif` | 蓝色信息圆形图标（带 i） |
+
+#### 9.2.3 DOSBox-X 配置对话框分组图标
+
+配置对话框按 section 分组显示时，每组使用对应图标：
+
+| 分组名称 | 图标文件 | 图标描述 |
+|---------|---------|---------|
+| DOSBox General（`[dosbox]`） | `controller.gif` | 游戏手柄 |
+| Display（`[sdl]` + `[render]`） | `monitor.gif` | 电脑显示器 |
+| CPU（`[cpu]`） | `computer.gif` | 台式电脑 |
+| Sound（`[sblaster]` + `[midi]` + `[gus]`） | `sound.gif` | 扬声器与声波 |
+| DOS（`[dos]`） | `application_xp_terminal.gif` | 终端/命令行窗口 |
+
+#### 9.2.4 游戏列表与详情面板图标
+
+| 用途 | 图标文件 | 图标描述 |
+|------|---------|---------|
+| 默认封面占位（列表缩略图） | `picture.gif` | 风景画框图标（仅作为缩略位置的小图标提示，见 9.3 关于大尺寸占位图） |
+| 分类标签 | `tag.gif` | 蓝色标签 |
+| 最近游玩时间 | `clock.gif` | 时钟 |
+
+#### 9.2.5 对话框与通用 UI 图标
+
+| 用途 | 图标文件 | 图标描述 |
+|------|---------|---------|
+| 确认 / OK | `accept.gif` | 绿色对勾圆形 |
+| 警告提示 | `icon_alert.gif` | 黄色三角警告 |
+| 信息提示 | `icon_info.gif` | 蓝色信息圆点 |
+| 浏览文件夹 | `folder_go.gif` | 文件夹与绿色箭头 |
+| 保存 | `disk.gif` | 软盘 |
+| 刷新 | `arrow_refresh.gif` | 绿色循环箭头 |
+| 排序升序 | `arrow_up.gif` | 绿色上箭头 |
+| 排序降序 | `arrow_down.gif` | 绿色下箭头 |
+| 树节点展开 | `Expand.gif` | 方框内 + 号 |
+| 树节点折叠 | `Collapse.gif` | 方框内 − 号 |
+
+#### 9.2.6 分类与路径相关图标
+
+| 用途 | 图标文件 | 图标描述 |
+|------|---------|---------|
+| "All"分类 | `folder_star.gif` | 带星标的文件夹 |
+| 普通分类 | `folder.gif` | 标准文件夹 |
+| 截图目录设置 | `folder_camera.gif` | 带相机的文件夹 |
+| 游戏库目录设置 | `folder_page.gif` | 带文档的文件夹 |
+
+### 9.3 需要新增的图标资源
+
+以下图标资源在现有图标集中不存在，需要新建：
+
+| 资源 | 文件路径 | 格式与尺寸 | 说明 |
+|------|---------|-----------|------|
+| 应用程序图标 | `assets/app.ico` | ICO，包含 16×16、32×32、48×48、256×256 四个尺寸 | 用于窗口标题栏、任务栏和桌面快捷方式。视觉主题建议为"复古游戏手柄"或"DOS 终端 + 游戏元素"的组合，呼应 DOSBox 游戏启动器的定位 |
+| 应用程序图标（PNG） | `assets/app.png` | PNG，256×256 | 与 ICO 最大尺寸一致的 PNG 版本，用于 Linux/macOS 及 About 对话框展示 |
+| 默认封面占位图 | `assets/default_cover.png` | PNG，160×200 | 游戏未指定封面图时的占位图。设计为灰色底色 + 居中的游戏手柄或光碟剪影 + "No Cover" 文字提示，保持视觉整洁 |
+
+### 9.4 未使用的图标
+
+以下图标保留在 `assets/icons/` 目录中，但当前 MVP 未分配用途，可供后续版本扩展使用：
+
+`action_go.gif`、`action_paste.gif`、`application_form.gif`、`application_side_tree.gif`、`application_view_icons.gif`、`application_view_tile.gif`、`application_xp.gif`、`calculator.gif`、`cd.gif`、`comment.gif`、`compress.gif`、`cut.gif`、`database.gif`、`drive.gif`、`drive_network.gif`、`film.gif`、`find.gif`、`folder_magnify.gif`、`icon_get_world.gif`、`keyboard.gif`、`link.gif`、`list_components.gif`、`list_errors.gif`、`list_images.gif`、`list_settings.gif`、`list_users.gif`、`lock.gif`、`mouse.gif`、`page.gif`、`page_colors.gif`、`page_copy.gif`、`page_down.gif`、`page_save.gif`、`page_up.gif`、`page_white_add.gif`、`page_world.gif`、`printer.gif`、`resultset_next.gif`、`resultset_previous.gif`、`scummvm.gif`、`server_connect.gif`、`table.gif`、`table_lightning.gif`、`table_multiple.gif`、`text_allcaps.gif`、`tux.gif`、`wand.gif`、`world.gif`、`wrench.gif`
