@@ -126,7 +126,8 @@ DOSBoxLauncher/
 ### Phase 2: UI Foundation
 
 **Step 2.1 — ui/resources.py**
-- `get_icon(name)` → QIcon（缓存机制）
+- `get_icon(name)` → QIcon（缓存机制）；加载 16×16 GIF 后平滑缩放至 32×32（`_ICON_DISPLAY_SIZE`），所有图标统一 2x 显示
+- `get_icon_from_file(filename)` → 同上，直接按文件名加载并 2x 缩放
 - `get_app_icon()` → 应用图标
 - `get_default_cover()` → 默认封面 QPixmap
 - `get_cover_pixmap(game_id, data_dir)` → 封面或默认封面
@@ -146,7 +147,8 @@ DOSBoxLauncher/
 
 **Step 2.3 — ui/detail_panel.py**
 - `GameDetailPanel(QFrame)`:
-  - 水平布局：左侧封面大图（160x200），右侧信息
+  - 水平布局：左侧封面大图（320×400），右侧信息
+  - 游戏名称字体 24px bold，面板最小高度 320
   - set_game() / clear()
 
 **Step 2.4 — ui/dialogs/dosbox_config_widget.py**
@@ -173,7 +175,7 @@ DOSBoxLauncher/
 - 按钮状态管理（Edit/Delete/Launch 仅选中时可用）
 
 **Step 3.2 — ui/app.py**
-- `run()`: 创建 QApplication，解析数据目录，加载配置和游戏数据，创建 MainWindow，启动事件循环
+- `run()`: 创建 QApplication，设置全局字体 13pt（适配年长用户），解析数据目录，加载配置和游戏数据，创建 MainWindow，启动事件循环
 - 配置 logging
 
 **Step 3.3 — 连接 __main__.py**
@@ -207,6 +209,38 @@ DOSBoxLauncher/
 | 进程启动 | Popen 非阻塞 | 不冻结 UI |
 | JSON 写入 | 临时文件 + os.replace() | 原子写入防崩溃损坏 |
 | 分类筛选 | 工具栏下拉选择器 | MVP 最简实现 |
+| UI 2x 放大 | 全局字体 13pt + 图标/控件尺寸统一 2 倍 | 目标用户年龄偏大视力较差，需减轻视觉疲劳 |
+
+---
+
+## UI 尺寸速查表
+
+> 所有 UI 尺寸均基于"2x 放大"原则设计，以适配年长用户的视力需求。
+
+| 元素 | 尺寸 | 说明 |
+|------|------|------|
+| 全局字体 | 13pt | app.py 中 `app.setFont()` 设置 |
+| 图标显示尺寸 | 32×32 | resources.py 中 `_ICON_DISPLAY_SIZE`，原始 GIF 16×16 平滑缩放 |
+| 工具栏图标尺寸 | 32×32 | `tb.setIconSize(QSize(32, 32))` |
+| 封面缩略图 | 64×80 | constants.py `COVER_THUMBNAIL_SIZE` |
+| 封面详情图 | 320×400 | constants.py `COVER_DETAIL_SIZE` |
+| 主窗口最小尺寸 | 1200×800 | main_window.py `setMinimumSize()` |
+| 搜索框最大宽度 | 400 | main_window.py |
+| 分类下拉最小宽度 | 200 | main_window.py |
+| 排序下拉最小宽度 | 240 | main_window.py |
+| 详情面板最小高度 | 320 | detail_panel.py |
+| 详情面板边距 | 16 | detail_panel.py |
+| 游戏名称字体 | 24px bold | detail_panel.py |
+| 表格分类列宽 | 240 | game_table.py |
+| 表格最后游玩列宽 | 220 | game_table.py |
+| 表格游玩次数列宽 | 180 | game_table.py |
+| GameDialog 最小尺寸 | 700×640 | game_dialog.py |
+| GameDialog 封面预览 | 128×160 | game_dialog.py |
+| CategoryDialog 最小尺寸 | 500×420 | category_dialog.py |
+| SettingsDialog 最小尺寸 | 700×640 | settings_dialog.py |
+| AboutDialog 固定尺寸 | 480×360 | about_dialog.py |
+| AboutDialog 图标 | 128×128 | about_dialog.py |
+| AboutDialog 标题字体 | 28px bold | about_dialog.py |
 
 ---
 
